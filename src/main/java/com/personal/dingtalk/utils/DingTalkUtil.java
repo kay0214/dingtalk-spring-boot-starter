@@ -3,6 +3,7 @@
  */
 package com.personal.dingtalk.utils;
 
+import com.personal.dingtalk.properties.DingTalkBean;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +14,8 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author sunpeikai
@@ -36,5 +39,13 @@ public class DingTalkUtil {
             log.error("sign create fail, exception[{}]", e.getMessage());
         }
         return "";
+    }
+
+    public static Map<String, Object> healthInfo(){
+        Map<String, Object> result = new HashMap<>();
+        DingTalkBean dingTalkBean = SpringUtils.getBean(DingTalkBean.class);
+        result.put("size",dingTalkBean.getSize());
+        result.put("clients",dingTalkBean.getDingTalkClients());
+        return result;
     }
 }

@@ -1,22 +1,14 @@
 # 钉钉机器人
-## 提供日志appender和发送钉钉消息的功能
+## 提供日志收集appender和发送钉钉消息的功能
 ### 配置
-log:  
+dingtalk:  
   &emsp;enable: true  
-  &emsp;#模式: all全部; normal普通; minimal极简; custom自定义(自定义模式时必须执行includes). 默认normal  
-  &emsp;mode: normal  
-  &emsp;#日志内容分隔符,默认英文逗号,  
-  &emsp;split: ,  
-  &emsp;#显示内容定义.CLASS:显示类名;
-  METHOD:显示方法名;
-  URI:显示请求路径;
-  REQUEST_METHOD:请求方式GET,POST;
-  IP:显示客户端IP;
-  TIME:显示耗时;
-  CONTENT_TYPE:显示请求类型;
-  CONTENT_LENGTH:显示请求长度;
-  HEADER:显示请求头;
-  PARAM_ENCODE:显示请求参数字符集;
-  PARAM:显示请求参数;
-  RETURN:显示返回参数  
-  &emsp;includes: CLASS,METHOD,URI
+  &emsp;#app名称 - 提高辨识度  
+  &emsp;app-name: test  
+  &emsp;#配置文件 - 提高辨识度  
+  &emsp;profile: dev  
+  &emsp;#支持多个钉钉机器人  
+  &emsp;robots[0]:  
+    &emsp;&emsp;access-token: 58d2bfc3475de86cfed7f460a5a09ab48227d8ab16f0c60ed6f5c482255c2139  
+    &emsp;&emsp;secret: SEC02e46392a956d26e501c8ac50f02e2eb31770ef7d43e89f1658cd812f4e959ca  
+  &emsp;at-mobiles: 17685749636,15264225650

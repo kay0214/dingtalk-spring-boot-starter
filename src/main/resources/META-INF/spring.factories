@@ -1,2 +1,4 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.personal.dingtalk.actuator.DingTalkActuatorEndpointConfiguration,\
+com.personal.dingtalk.actuator.DingTalkHealthIndicator,\
 com.personal.dingtalk.configure.DingTalkAutoConfiguration
