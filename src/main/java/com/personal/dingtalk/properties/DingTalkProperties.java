@@ -18,7 +18,28 @@ public class DingTalkProperties {
     private String atMobiles;
     private String appName;
     private String profile;
-    private List<DingTalkRobotProperties> robots;
+    private List<RobotProperties> robots;
+
+    public static class RobotProperties{
+        private String accessToken;
+        private String secret;
+
+        public String getAccessToken() {
+            return accessToken;
+        }
+
+        public void setAccessToken(String accessToken) {
+            this.accessToken = accessToken;
+        }
+
+        public String getSecret() {
+            return secret;
+        }
+
+        public void setSecret(String secret) {
+            this.secret = secret;
+        }
+    }
 
     public boolean isEnable() {
         return enable;
@@ -52,11 +73,11 @@ public class DingTalkProperties {
         this.profile = profile;
     }
 
-    public List<DingTalkRobotProperties> getRobots() {
+    public List<RobotProperties> getRobots() {
         return robots;
     }
 
-    public void setRobots(List<DingTalkRobotProperties> robots) {
+    public void setRobots(List<RobotProperties> robots) {
         this.robots = robots;
     }
 }

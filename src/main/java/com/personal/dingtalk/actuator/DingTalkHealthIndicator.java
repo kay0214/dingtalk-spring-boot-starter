@@ -3,7 +3,9 @@
  */
 package com.personal.dingtalk.actuator;
 
+import com.personal.dingtalk.properties.DingTalkBean;
 import com.personal.dingtalk.utils.DingTalkUtil;
+import com.personal.dingtalk.utils.SpringUtils;
 import org.springframework.boot.actuate.health.Health;
 import org.springframework.boot.actuate.health.HealthIndicator;
 import org.springframework.stereotype.Component;
@@ -18,7 +20,7 @@ public class DingTalkHealthIndicator implements HealthIndicator {
     @Override
     public Health health() {
         Health.Builder builder = new Health.Builder();
-        if(true){
+        if(SpringUtils.getBean(DingTalkBean.class).getSize() > 0){
             // 把redis系统信息放入
             DingTalkUtil.healthInfo().forEach(builder::withDetail);
             return builder.up().build();

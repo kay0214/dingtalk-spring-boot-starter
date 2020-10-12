@@ -7,7 +7,6 @@ import com.dingtalk.api.DefaultDingTalkClient;
 import com.dingtalk.api.DingTalkClient;
 import com.personal.dingtalk.properties.DingTalkBean;
 import com.personal.dingtalk.properties.DingTalkProperties;
-import com.personal.dingtalk.properties.DingTalkRobotProperties;
 import com.personal.dingtalk.utils.DingTalkUtil;
 import com.personal.dingtalk.utils.SpringUtils;
 import org.slf4j.Logger;
@@ -31,7 +30,7 @@ import java.util.List;
  */
 @Configuration
 @Import({SpringUtils.class})
-@EnableConfigurationProperties({DingTalkProperties.class, DingTalkRobotProperties.class})
+@EnableConfigurationProperties({DingTalkProperties.class})
 @ConditionalOnProperty(name = {"dingtalk.enable"}, havingValue = "true")
 public class DingTalkAutoConfiguration {
 
@@ -54,7 +53,7 @@ public class DingTalkAutoConfiguration {
         // 钉钉client
         List<DingTalkClient> clients = new ArrayList<>();
         Assert.isTrue(dingTalkProperties.getRobots() != null && dingTalkProperties.getRobots().size() > 0, "robots can't be empty.");
-        for (DingTalkRobotProperties robot : dingTalkProperties.getRobots()) {
+        for (DingTalkProperties.RobotProperties robot : dingTalkProperties.getRobots()) {
             Assert.isTrue(!StringUtils.isEmpty(robot.getAccessToken()), "robot accessToken can't be empty.");
             if(StringUtils.isEmpty(robot.getSecret())){
                 // 密钥为空 - 不需要签名
